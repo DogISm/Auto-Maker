@@ -6,8 +6,8 @@ from unittest import BaseTestSuite
 import pygame
 from math import *
 
-def distanceCal(x1,y1,x2,y2):
-    distance = [sqrt(((x2-x1)**2)), sqrt(((y2-y1)**2))]
+def distanceCal(mouse,pos):
+    distance = [sqrt(((pos[1]-mouse[1])**2)), sqrt(((pos[0]-mouse[0])**2))]
     return distance
 
 pygame.init()
@@ -70,8 +70,10 @@ betterMouseCoords2 = [0, 0]
 betterMouseCoords3 = [0, 0]
 betterMouseCoords4 = [0, 0]
 betterMouseCoords5 = [0, 0]
+green2OutputText, green3OutputText, green4OutputText, green5OutputText = greenOutputText, greenOutputText, greenOutputText, greenOutputText
 coords = [betterMouseCoords, betterMouseCoords2, betterMouseCoords3, betterMouseCoords4, betterMouseCoords5]
 point5, point4, point3, point2, point = False, False, False, False, False
+outputTL = [green5OutputText,green4OutputText,green3OutputText, green2OutputText, greenOutputText]
 active=False
 yactive = False
 while True:
@@ -161,17 +163,37 @@ while True:
                     textFGC = font.render(greenOutputText, True, blue, green)
                 coords = [betterMouseCoords,betterMouseCoords2,betterMouseCoords3,betterMouseCoords5]
                 if point or point2 or point3 or point4 or point5:
-                    if event.key == pygame.K_DELETE:
-                        print(distanceCal(pygame.mouse.get_pos()[1],pygame.mouse.get_pos()[0],betterMouseCoords2[1],betterMouseCoords2[0]))
-                        
+                    if event.key == pygame.K_BACKSPACE:
                         green5OutputText,green4OutputText,green3OutputText, green2OutputText, greenOutputText = 'Click a point to get position', 'Click a point to get position', 'Click a point to get position', 'Click a point to get position', 'Click a point to get position'
-             
+
+                        if point5:
+                            textFGC5 = font.render(green5OutputText, True, blue, green)
+                            point5 = False
+                        elif point4:
+                            textFGC4 = font.render(green4OutputText, True, blue, green)
+                            point4=False
+                        elif point3:
+                            textFGC3 = font.render(green3OutputText, True, blue, green)
+                            point3=False
+                        elif point2:
+                            textFGC2 = font.render(green2OutputText, True, blue, green)
+                            point2=False
+                        else:
+                            textFGC = font.render(greenOutputText, True, blue, green)
+                            point=False
+                        # textFGC2 = font.render(green2OutputText, True, blue, green)
+                        # textFGC3 = font.render(green3OutputText, True, blue, green)
+                        # textFGC5 = font.render(green5OutputText, True, blue, green)
+
+                        # point5, point4, point3, point2, point = False, False, False, False, False
+                    if event.key == pygame.K_DELETE:
+                        green5OutputText,green4OutputText,green3OutputText, green2OutputText, greenOutputText = 'Click a point to get position', 'Click a point to get position', 'Click a point to get position', 'Click a point to get position', 'Click a point to get position'
+                        
                         textFGC = font.render(greenOutputText, True, blue, green)
                         textFGC2 = font.render(green2OutputText, True, blue, green)
                         textFGC3 = font.render(green3OutputText, True, blue, green)
                         textFGC4 = font.render(green4OutputText, True, blue, green)
                         textFGC5 = font.render(green5OutputText, True, blue, green)
-
                         point5, point4, point3, point2, point = False, False, False, False, False
 
         if event.type == pygame.MOUSEBUTTONDOWN:
