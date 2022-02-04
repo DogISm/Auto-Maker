@@ -163,11 +163,8 @@ while True:
                 if point or point2 or point3 or point4 or point5:
                     if event.key == pygame.K_DELETE:
                         print(distanceCal(pygame.mouse.get_pos()[1],pygame.mouse.get_pos()[0],betterMouseCoords2[1],betterMouseCoords2[0]))
+                        
                         green5OutputText,green4OutputText,green3OutputText, green2OutputText, greenOutputText = 'Click a point to get position', 'Click a point to get position', 'Click a point to get position', 'Click a point to get position', 'Click a point to get position'
-                        # greenOTL = greenOutputText,green2OutputText,green3OutputText, green4OutputText, green5OutputText
-                        # greenOTL = list(greenOTL)
-                        # for i in range(len(textFGCL)):
-                        #     textFGCL[i] = font.render(greenOTL[i], True, blue, green)
              
                         textFGC = font.render(greenOutputText, True, blue, green)
                         textFGC2 = font.render(green2OutputText, True, blue, green)
