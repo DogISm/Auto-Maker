@@ -87,8 +87,12 @@ while True:
         distance5 = distanceCal(pygame.mouse.get_pos(), coords[4])
         if distance1>distance2:distance1win=distance1
         else:distance2win=distance2
-        
-
+        if distance2>distance3:distance2win=distance2
+        else: distance3win=distance3
+        if distance3>distance4:distance3win=distance3
+        else:distance4win=distance4
+        if distance4>distance5:distance4win=distance4
+        else:distance5win=distance5
 
     rBMS = (pygame.mouse.get_pos()[0]+(RADIUS*2.5)), pygame.mouse.get_pos()[1]+(RADIUS*2.5)
 
