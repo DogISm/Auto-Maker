@@ -1,5 +1,5 @@
 
-from cairo import RadialGradient
+from cairocffi import RadialGradient
 import pygame
 from constants import *
 from math import *
